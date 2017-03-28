@@ -9,16 +9,31 @@
 //mysql_connect("localhost", "root", "") or die("<p>Error connecting to database:" . mysql_error() . "</p>");
 
 // #1 用 mysqli mysqli 命令替代
-$mysqli = new mysqli("localhost", "root", "", "test");
+$mysqli = mysqli_connect("localhost", "root", "", "test");
 // 检查连接状态
-if($mysqli->connect_errno){
-    printf("Connect failed: %s\n", $mysqli->connect_error);
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
-}else{
+} else {
     echo "<p>Connected to MySQL!(use-mysqli)</p>";
 }
+// 查询
+//$rst = mysqli_query($mysqli,"SHOW TABLES");
 
-$result = mysqli_query($mysqli, "SHOW TABLES");
+if ($result = mysqli_query($mysqli, "SHOW TABLES")) {
+    // 查看结果
+    printf("return %d rows.\n", mysqli_num_rows($result));
+
+    echo "<p>Tables in databases:</p>";
+    echo "<ul>";
+    while ($row = mysqli_fetch_row($result)) {
+        // echo "<li>Table:" . $row[0] . "</li>";
+        echo "<li>Table: {$row[0]} </li>";
+    }
+    echo "</ul>";
+    // 关闭数据库
+    mysqli_free_result($result);
+}
 
 // #2 用 PDO 连接数据库
 try {
