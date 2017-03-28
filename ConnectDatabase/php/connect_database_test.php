@@ -20,6 +20,14 @@ if (mysqli_connect_errno()) {
 } else {
     echo "<p>Connected to MySQL!(use-mysqli)</p>";
 }
+
+try {
+    mysqli_select_db($mysqli, DATABASE_NAME);
+    echo "<p>Connected to MYSQL, using database: " . DATABASE_NAME . "</p>";
+} catch (mysqli_sql_exception $e) {
+    echo $e->getMessage() . "</p>";
+}
+
 // 查询
 //$rst = mysqli_query($mysqli,"SHOW TABLES");
 
@@ -38,6 +46,7 @@ if ($result = mysqli_query($mysqli, "SHOW TABLES")) {
     mysqli_free_result($result);
 }
 
+echo "<p>--------------------------------------------</p>";
 // #2 用 PDO 连接数据库
 try {
     $cdb = new PDO(

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../css/bootstrap.css" type="text/css" rel="stylesheet">
+    <title>Query Runner</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-info text-center">SQL Query Runner</h1>
+    <form action="php/run_query.php" method="post">
+        <fieldset class=" text-center">
+            <textarea id="query-text" name="query"
+                      cols="65" rows="8">
+            </textarea>
+            <br>
+        </fieldset>
+        <fieldset class="text-center">
+            <input class="btn btn-success" type="submit" value="Run Query">
+            <input class="btn btn-danger" type="reset" value="Clear and Restart">
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
