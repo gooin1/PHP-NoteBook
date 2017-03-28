@@ -6,6 +6,6 @@
 </head>
 <body>
 <h1>submitted</h1>
-<p>Name: <?php echo "test success"; ?></p>
+<p><?php echo "test success"; ?></p>
 </body>
 </html>
