@@ -5,11 +5,16 @@
  * Date: 2017/3/28
  * Time: 12:43
  */
+
+$database_host = "localhost";
+$username = "root";
+$password = "";
+$database_name = "test";
 // 连接数据库(已经过时)
 //mysql_connect("localhost", "root", "") or die("<p>Error connecting to database:" . mysql_error() . "</p>");
 
 // #1 用 mysqli mysqli 命令替代
-$mysqli = mysqli_connect("localhost", "root", "", "test");
+$mysqli = mysqli_connect($database_host, $username, $password, $database_name);
 // 检查连接状态
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
