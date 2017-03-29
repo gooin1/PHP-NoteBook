@@ -10,5 +10,5 @@
 // 数据库连接常量
 define("DATABASE_HOST", "localhost");
 define("DATABASE_USERNAME", "root");
-define("DATABASE_PASSWORD", "");
+define("DATABASE_PASSWORD", "yzt753951");
 define("DATABASE_NAME", "test");
