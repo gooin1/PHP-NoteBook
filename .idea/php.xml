@@ -5,4 +5,9 @@
       <server host="123.206.59.44" id="87a5f6b3-e294-4d1f-8850-714841db23dc" name="qcloud" use_path_mappings="true" />
     </servers>
   </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings load_method="CUSTOM_LOADER" />
+    </phpunit_settings>
+  </component>
 </project>

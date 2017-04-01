@@ -1,10 +1,9 @@
 <?php
 
-
-$string = "regex dafa is dafa dada  good!";
-$regex = "/dafa/";
+$string = "regex Mr.Dc  Dr.Dc is  dada  good!";
+$regex = "/(Dr|Mr)\.Dc/";
 
 $result = preg_match_all($regex, $string);
 
 echo $result;
-echo "<br>fan tong da sabi";
+
