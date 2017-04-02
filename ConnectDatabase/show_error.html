@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+    <link href="../css/bootstrap.css" type="text/css" rel="stylesheet">
+</head>
+<body class="container">
+<div class="alert alert-danger" style="margin-top: 10%">
+    <h1>Error</h1>
+</div>
+<div class="alert alert-warning">
+    <h1>Here is a record of what information you submitted!</h1>
+</div>
+<div class="alert alert-info">
+    <h2>Name: <?php echo $name;?></h2>
+    <h2>Email: <?php echo $email;?></h2>
+    <h2>Weibo: <?php echo $weibo;?></h2>
+    <h2>Weibo URL: <?php echo $weibo_url;?></h2>
+    <h2>Bio: <?php echo $bio;?></h2>
+</div>
+</body>
+</html>

@@ -5,6 +5,7 @@
  * Date: 2017/4/1
  * Time: 19:18
  */
+
 require "database_connection.php";
 // 获取用户id
 $user_id = $_REQUEST['user_id'];
