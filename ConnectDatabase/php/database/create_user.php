@@ -5,7 +5,7 @@
  * Date: 2017/4/1
  * Time: 13:32
  */
-require "database_connection.php";
+require_once "database_connection.php";
 // 获取表单中的姓名 删除无关字符
 $name = trim($_REQUEST['name']);
 $email = trim($_REQUEST['email']);

@@ -6,7 +6,7 @@
  * Time: 12:43
  */
 
-require 'app_config.php';
+require_once 'database/app_config.php';
 
 // 连接数据库(已经过时)
 //mysql_connect("localhost", "root", "") or die("<p>Error connecting to database:" . mysql_error() . "</p>");
