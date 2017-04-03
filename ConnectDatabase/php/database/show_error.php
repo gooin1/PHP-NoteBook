@@ -44,13 +44,10 @@ if (isset($_REQUEST['system_error_message'])) {
 <div class="alert alert-info">
     <h3>错误信息为: </h3>
     <h1><?php echo $error_message; ?></h1>
-</div>
-<div class="alert alert-danger">
-    <h3>系统错误信息为:</h3>
     <?php
-    debug_print("<h1>{$system_error_message}</h1>");
-
+    debug_print("<h3>系统错误信息为: </h3><h1>{$system_error_message}</h1>");
     ?>
 </div>
+
 </body>
 </html>
