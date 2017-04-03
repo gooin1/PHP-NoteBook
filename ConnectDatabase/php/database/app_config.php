@@ -15,7 +15,7 @@ define("DEBUG_MODE", true);
 define("DATABASE_HOST", "localhost");
 define("DATABASE_USERNAME", "root");
 define("DATABASE_PASSWORD", "yzt753951");
-define("DATABASE_NAME", "233");
+define("DATABASE_NAME", "test");
 
 
 function debug_print($error_message)
