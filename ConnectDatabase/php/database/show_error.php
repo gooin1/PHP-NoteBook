@@ -20,7 +20,7 @@ if ($isSet) {
 <head>
     <meta charset="UTF-8">
     <title>Error Page</title>
-    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../../../css/bootstrap.css" type="text/css" rel="stylesheet">
 </head>
 <body class="container">
 <div class="alert alert-danger" style="margin-top: 7%">

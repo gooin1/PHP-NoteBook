@@ -34,7 +34,7 @@ exit();
 <head>
     <meta charset="UTF-8">
     <title>create user</title>
-    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../../../css/bootstrap.css" type="text/css" rel="stylesheet">
 </head>
 <body class="container">
 <div class="alert alert-success" style="margin-top: 10%">

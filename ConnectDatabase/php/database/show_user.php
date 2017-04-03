@@ -33,7 +33,7 @@ if($result){
 <head>
     <meta charset="UTF-8">
     <title>show user</title>
-    <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../../../css/bootstrap.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header class="container alert alert-info" style="margin-top: 8%">
@@ -47,7 +47,7 @@ if($result){
         <h2><?php echo $bio;?></h2>
     </div>
     <div class="col-md-4">
-        <img src="../images/logo.png" width="300px" height="300px">
+        <img src="../../images/logo.png" width="300px" height="300px">
     </div>
     <div class="col-md-12">
         <h3>get in touch with <?php echo $name;?></h3>
