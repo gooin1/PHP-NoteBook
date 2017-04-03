@@ -15,7 +15,7 @@ define("DEBUG_MODE", true);
 define("DATABASE_HOST", "localhost");
 define("DATABASE_USERNAME", "root");
 define("DATABASE_PASSWORD", "yzt753951");
-define("DATABASE_NAME", "test");
+define("DATABASE_NAME", "233");
 
 
 function debug_print($error_message)
@@ -23,4 +23,12 @@ function debug_print($error_message)
     if (DEBUG_MODE) {
         echo $error_message;
     }
+}
+
+function handle_error($user_error_message, $system_error_message)
+{
+    header("Location:show_error.php?" .
+        "error_message={$user_error_message}&" .
+        "system_error_message={$system_error_message}");
+    exit();
 }
