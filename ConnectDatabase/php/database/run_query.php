@@ -5,7 +5,7 @@
  * Date: 2017/3/28
  * Time: 20:05
  */
-require "database_connection.php";
+require_once "database_connection.php";
 
 
 // 获取文本框输入的内容
