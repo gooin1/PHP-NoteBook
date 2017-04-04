@@ -21,9 +21,14 @@ $php_errors = array(1 => "超过 php.ini 最大文件限制",
 or handle_error("服务器不能上传你的小黄图", $php_errors[$_FILES[$image_fieldname]['error']]);
 // 上传的是有效文件吗?
 @is_uploaded_file($_FILES[$image_fieldname]['tmp_name'])
-or handle_error("无效的文件",
+or handle_error("无效的文件(请选择上传的文件)",
     "Uploaded request: file named:" . "{$_FILES[$image_fieldname]['tmp_name']}");
 // 是图像文件吗?
+@getimagesize($_FILES[$image_fieldname]['tmp_name'])
+or handle_error("你上传的文件" . "{$_FILES[$image_fieldname]['name']}"
+    . "不是图片啊!!<br>"
+    ."图片大小: ".var_dump(getimagesize($_FILES[$image_fieldname]['tmp_name'])),
+    "{$_FILES[$image_fieldname]['tmp_name']}" . "不是有效的图片");
 //getimagesize($_FILES[$image_fieldname]['tmp_name'])
 //or handle_error("你上传的文件". "{$_FILES[$image_fieldname]['name']}" ."不是图片啊!!",
 //    "{$_FILES[$image_fieldname]['tmp_name']}" . "不是有效的图片");
