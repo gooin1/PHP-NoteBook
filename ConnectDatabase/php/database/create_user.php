@@ -58,7 +58,7 @@ if (!preg_match($regex, $weibo)) {
 $weibo_id = str_replace("@", "", $weibo);
 $weibo_url = "http://weibo.com/" . $weibo_id;
 // SQL 语句
-$insert_sql = "INSERT INTO users(name, email, weibo, weibo_url, bio)" . "VALUES('{$name}','{$email}','{$weibo}','{$weibo_url}','{$bio}');";
+$insert_sql = "INSERT INTO users(name, email, weibo, weibo_url, bio ,user_pic_path)" . "VALUES('{$name}','{$email}','{$weibo}','{$weibo_url}','{$bio}','{$upload_filename}');";
 // 执行 SQL 语句
 mysqli_query($db, $insert_sql) or die(mysqli_error($db));
 

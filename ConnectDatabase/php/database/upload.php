@@ -5,6 +5,7 @@
  * Date: 2017/4/4
  * Time: 10:35
  */
+echo "doc root path: {$_SERVER['DOCUMENT_ROOT']}";
 print_r($_FILES);
 $file_name = $_FILES['user_pic']['name'];
 $tmp_name = $_FILES['user_pic']['tmp_name'];

@@ -24,6 +24,7 @@ if($result){
     $weibo = $row['weibo'];
     $weibo_url = $row['weibo_url'];
     $bio = $row['bio'];
+    $user_image = get_web_path($row['user_pic_path']);
 }else{
     // 报错
     die("Error locating user with ID {$user_id}");
@@ -36,7 +37,7 @@ if($result){
     <link href="../../../css/bootstrap.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-<header class="container alert alert-info" style="margin-top: 8%">
+<header class="container alert alert-info" style="margin-top: 3%">
     <h1 class="text-center">User Information</h1>
 </header>
 <div class="container alert alert-warning">
@@ -47,7 +48,7 @@ if($result){
         <h2><?php echo $bio;?></h2>
     </div>
     <div class="col-md-4">
-        <img src="../../images/logo.png" width="300px" height="300px">
+        <img src="<?php echo $user_image?>" width="300px" height="300px">
     </div>
     <div class="col-md-12">
         <h3>get in touch with <?php echo $name;?></h3>

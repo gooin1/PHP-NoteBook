@@ -33,4 +33,7 @@ function handle_error($user_error_message, $system_error_message)
         "system_error_message={$system_error_message}");
     exit();
 }
-
+// 获取web路径
+function get_web_path($file_system_path){
+    return str_replace($_SERVER['DOCUMENT_ROOT'], '', $file_system_path);
+}
