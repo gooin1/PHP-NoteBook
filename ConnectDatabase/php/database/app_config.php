@@ -9,7 +9,8 @@
 
 // 设置调试模式
 define("DEBUG_MODE", true);
-
+// 设置文件路径
+define("__DIR__", "/home/wwwroot/gooin.win/ConnectDatabase/");
 
 // 数据库连接常量
 define("DATABASE_HOST", "localhost");
