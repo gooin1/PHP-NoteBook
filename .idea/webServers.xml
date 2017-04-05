@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="108b333c-d1cc-4794-a566-3ae22637ed46" name="qcloud" url="http://gooin.win">
-        <fileTransfer host="123.206.59.44" port="22" rootFolder="/home/wwwroot/gooin.win" accessType="SFTP">
+      <webServer id="7bd6887d-9c0d-43f2-816a-272b2bcc5c61" name="lzres.win" url="http://lzres.win">
+        <fileTransfer host="123.206.59.44" port="22" rootFolder="/home/wwwroot/lzres.win" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

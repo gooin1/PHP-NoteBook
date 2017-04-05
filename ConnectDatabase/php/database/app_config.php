@@ -10,14 +10,13 @@
 // 设置调试模式
 define("DEBUG_MODE", true);
 // 设置文件路径
-define("__DIR__", "/home/wwwroot/gooin.win/ConnectDatabase/");
+define("__DIR__", $_SERVER['DOCUMENT_ROOT']);
 
 // 数据库连接常量
 define("DATABASE_HOST", "localhost");
 define("DATABASE_USERNAME", "root");
 define("DATABASE_PASSWORD", "yzt753951");
 define("DATABASE_NAME", "test");
-
 
 function debug_print($error_message)
 {

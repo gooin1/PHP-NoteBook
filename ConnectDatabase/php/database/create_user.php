@@ -6,9 +6,8 @@
  * Time: 13:32
  */
 require_once "database_connection.php";
+$upload_dir = __DIR__ . "/user_uploads/";
 
-$upload_dir = "/home/wwwroot/gooin.win/ConnectDatabase/php/database/user_uploads/";
-//$upload_dir = "../images/user_uploads/";
 $image_fieldname = "user_pic";
 
 // 上传可能出现的错误
@@ -27,20 +26,18 @@ or handle_error("无效的文件(请选择上传的文件)",
 @getimagesize($_FILES[$image_fieldname]['tmp_name'])
 or handle_error("你上传的文件" . "{$_FILES[$image_fieldname]['name']}"
     . "不是图片啊!!<br>"
-    ."图片大小: ".var_dump(getimagesize($_FILES[$image_fieldname]['tmp_name'])),
+    . "图片大小: " . var_dump(getimagesize($_FILES[$image_fieldname]['tmp_name'])),
     "{$_FILES[$image_fieldname]['tmp_name']}" . "不是有效的图片");
-//getimagesize($_FILES[$image_fieldname]['tmp_name'])
-//or handle_error("你上传的文件". "{$_FILES[$image_fieldname]['name']}" ."不是图片啊!!",
-//    "{$_FILES[$image_fieldname]['tmp_name']}" . "不是有效的图片");
-
 // 生成唯一的文件名
 $now = time();
 while (file_exists($upload_filename = $upload_dir . $now . '-' . $_FILES[$image_fieldname]['name'])) {
     $now++;
 }
 //chmod($upload_filename, 0666);
-@move_uploaded_file($_FILES[$image_fieldname]['tmp_name'], $upload_filename)
-or handle_error($_FILES[$image_fieldname]['tmp_name'], "移动文件到" . $upload_filename . "出现问题: " . print_r($_FILES));
+move_uploaded_file($_FILES[$image_fieldname]['tmp_name'], $upload_filename)
+or handle_error($_FILES[$image_fieldname]['tmp_name'],
+    "移动文件到" . $upload_filename . "出现问题: " . $php_errors);
+
 
 //copy($_FILES[$image_fieldname]['tmp_name'], "../images/" . $upload_filename)
 //or handle_error($_FILES[$image_fieldname]['tmp_name'], "移动文件到" . $upload_filename . "出现问题: " . print_r($_FILES));
@@ -58,12 +55,59 @@ if (!preg_match($regex, $weibo)) {
 $weibo_id = str_replace("@", "", $weibo);
 $weibo_url = "http://weibo.com/" . $weibo_id;
 // SQL 语句
-$insert_sql = "INSERT INTO users(name, email, weibo, weibo_url, bio ,user_pic_path)" . "VALUES('{$name}','{$email}','{$weibo}','{$weibo_url}','{$bio}','{$upload_filename}');";
-// 执行 SQL 语句
-mysqli_query($db, $insert_sql) or die(mysqli_error($db));
+$insert_sql = sprintf("INSERT INTO users(name, email, weibo, weibo_url, bio, user_pic_path)" .
+    "VALUES('%s','%s','%s','%s','%s','%s');",
+    mysqli_real_escape_string($db, $name),
+    mysqli_real_escape_string($db, $email),
+    mysqli_real_escape_string($db, $weibo),
+    mysqli_real_escape_string($db, $weibo_url),
+    mysqli_real_escape_string($db, $bio),
+    mysqli_real_escape_string($db, $upload_filename));
 
+//$insert_sql = "INSERT INTO users(name, email, weibo, weibo_url, bio ,user_pic_path)" .
+//    "VALUES('{$name}','{$email}','{$weibo}','{$weibo_url}','{$bio}','{$upload_filename}');";
+//// 执行 SQL 语句
+mysqli_query($db, $insert_sql) or die(mysqli_error($db));
+// 保存用户id
+$user_id = mysqli_insert_id($db);
+
+// 把图像插入到 images 表中
+$image = $_FILES[$image_fieldname];
+$image_filename = $image['name'];
+$image_info = getimagesize($upload_filename);
+$image_mime_type = $image_info['mime'];
+$image_size = $image['size'];
+/**大坑
+如果 tmp_name 取不到文件信息, 可以用上传好的文件获取信息
+$image_data = file_get_contents($image['tmp_name']);
+**/
+// 用我!!
+$image_data = file_get_contents($upload_filename);
+
+// SQL 语句
+$insert_image_sql = sprintf("INSERT INTO  images(file_name, mime_type, file_size, image_data)".
+    "VALUES('%s','%s','%s','%s');",
+    mysqli_real_escape_string($db,$image_filename),
+    mysqli_real_escape_string($db,$image_mime_type),
+    mysqli_real_escape_string($db,$image_size),
+    mysqli_real_escape_string($db,$image_data));
+
+//$insert_image_sql = "INSERT INTO images(file_name, mime_type, file_size, image_data)" .
+//    "VALUES('{$image_filename}', '{$image_mime_type}','{$image_size}','{mysqli_real_escape_string($db,$image_data)}');";
+//
+mysqli_query($db, $insert_image_sql) or die(mysqli_error($db));
+
+//echo $_FILES[$image_fieldname]['n'];
+//print_r($_FILES);
+//ini_set('display_errors', true);
+//error_reporting(E_ALL);
+//list($width, $height) = getimagesize($upload_filename);
+//echo $width;
+//echo $height;
+//echo var_dump( $image_data);
+//echo $image_mime_type = $image_info['mime'];
 // 将用户定位到新页面
-header("Location:show_user.php?user_id=" . mysqli_insert_id($db));
+header("Location:show_user.php?user_id=" . $user_id);
 exit();
 ?>
 
