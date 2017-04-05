@@ -11,7 +11,7 @@ require "database_connection.php";
 $user_id = $_REQUEST['user_id'];
 //$user_id = 1;
 // 创建查询语句
-$select_query = "SELECT * FROM users WHERE user_id = " . $user_id;
+$select_query = sprintf("SELECT * FROM users WHERE user_id = %d" ,$user_id);
 // 进行查询
 $result = mysqli_query($db, $select_query);
 //
@@ -25,6 +25,9 @@ if($result){
     $weibo_url = $row['weibo_url'];
     $bio = $row['bio'];
     $user_image = get_web_path($row['user_pic_path']);
+    //获取图像id 叫交给 show_image.php
+    $image_id = $row['profile_pic_id'];
+
 }else{
     // 报错
     die("Error locating user with ID {$user_id}");
@@ -48,7 +51,8 @@ if($result){
         <h2><?php echo $bio;?></h2>
     </div>
     <div class="col-md-4">
-        <img src="<?php echo $user_image?>" width="300px" height="300px">
+<!--        从show_image.php 中取出图像-->
+        <img src="show_image.php?image_id=<?php echo $image_id;?>" width="300px" height="300px">
     </div>
     <div class="col-md-12">
         <h3>get in touch with <?php echo $name;?></h3>
