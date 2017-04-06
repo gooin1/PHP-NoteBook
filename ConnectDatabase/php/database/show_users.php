@@ -27,6 +27,14 @@ $result = mysqli_query($db, $select_users);
     <meta charset="UTF-8">
     <title>Show Users</title>
     <link href="../../../css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+        function delete_user(user_id) {
+            if(confirm("确定要删除这个炮灰吗?"+
+                "\n 删除后不能还原")){
+                window.location = "delete_user.php?user_id=" + user_id;
+            }
+        }
+    </script>
 </head>
 <body class="container">
 <div class="alert alert-success" style="margin-top: 5%">
@@ -39,7 +47,7 @@ $result = mysqli_query($db, $select_users);
     while ($user = mysqli_fetch_array($result)){
         $user_row = sprintf("<li><a href='show_user.php?user_id=%d'>%s</a>" .
             "(<a href='mailto:%s'>%s</a>)" .
-            "<a href='delete_user.php?user_id=%d'>删除</a>" .
+            "<a href='javascript:delete_user(%d)'>删除</a>" .
             "</li>",
             $user['user_id'], $user['name'], $user['email'],$user['email'], $user['user_id']);
         echo $user_row;
