@@ -17,5 +17,6 @@ $result = mysqli_query($db, $delete_query);
 
 
 // 重定向到 show_users 刷新显示的用户
-header("Location:show_users.php");
+$msg="选中的用户已经删除";
+header("Location:show_users.php?success_message={$msg}");
 exit();

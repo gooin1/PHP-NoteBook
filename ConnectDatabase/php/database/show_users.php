@@ -13,6 +13,11 @@ $select_users = "SELECT user_id, name, email FROM users";
 // 进行查询
 $result = mysqli_query($db, $select_users);
 
+// 获取传回的success参数
+if(isset($_REQUEST['success_message'])){
+    $msg = $_REQUEST['success_message'];
+}
+
 //while ($row = mysqli_fetch_row($result)) {
 //    echo "<li>{$row['col_name']}</li>";
 //}
@@ -34,6 +39,12 @@ $result = mysqli_query($db, $select_users);
                 window.location = "delete_user.php?user_id=" + user_id;
             }
         }
+        <?php if (isset($msg)) { ?>
+        window.onload = function () {
+            alert("<?php echo $msg ?>");
+        }
+        <?php } ?>
+
     </script>
 </head>
 <body class="container">
