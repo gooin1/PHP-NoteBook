@@ -20,6 +20,7 @@ if (isset($_REQUEST['success_message'])) {
 }
 ?>
 <?php
+// 将 delete 的脚本在 函数中加载
 $delete_user_script = <<<EOD
     function delete_user(user_id) {
         if (confirm("确定要删除这个炮灰吗?" +
@@ -29,31 +30,7 @@ $delete_user_script = <<<EOD
     } 
 EOD;
 display_head("Current Users" ,$delete_user_script);
-
-//while ($row = mysqli_fetch_row($result)) {
-//    echo "<li>{$row['col_name']}</li>";
-//}
-//$user_row = sprintf("<li><a href='show_user.php?user_id=%d'>%s</a>" .
-//    "(<a href='mailto:%s'>%s</a>)" .
-//    "<a href='delete_user?user_id=%d'>删除</a>" .
-//    "</li>", $user['user_id'], $user['name'], $user['email'], $user['user_id']);
-//
 ?>
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Show Users</title>-->
-<!--    <link href="../../../css/bootstrap.css" type="text/css" rel="stylesheet">-->
-<!--    <script type="text/javascript">-->
-<!--        function delete_user(user_id) {-->
-<!--            if (confirm("确定要删除这个炮灰吗?" +-->
-<!--                    "\n 删除后不能还原")) {-->
-<!--                window.location = "delete_user.php?user_id=" + user_id;-->
-<!--            }-->
-<!--        }-->
-<!--    </script>-->
-<!--</head>-->
-
 <body class="container">
 <div class="alert alert-success" style="margin-top: 5%">
     <h1 class="text-center">Users List</h1>
