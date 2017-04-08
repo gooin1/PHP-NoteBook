@@ -48,3 +48,25 @@ EOD;
 EOD;
     }
 }
+
+function display_title($title, $success_msg = NULL, $error_msg = NULL)
+{
+    echo <<<EOD
+<body class="container">
+<div class="alert alert-success" style="margin-top: 5%">
+    <h1 class="text-center">{$title}</h1>
+</div>
+EOD;
+    display_messages($success_msg, $error_msg);
+}
+
+
+function display_footer()
+{
+    echo <<<EOD
+</body>
+</html>
+EOD;
+
+
+}

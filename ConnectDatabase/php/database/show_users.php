@@ -30,15 +30,11 @@ $delete_user_script = <<<EOD
     } 
 EOD;
 display_head("Current Users" ,$delete_user_script);
+display_title('Current Users', $msg);
 ?>
-<body class="container">
-<div class="alert alert-success" style="margin-top: 5%">
-    <h1 class="text-center">Users List</h1>
-</div>
-<?php display_messages($msg); ?>
-
 <div class="alert alert-info">
     <ul>
+
         <?php
         while ($user = mysqli_fetch_array($result)) {
             $user_row = sprintf("<li><a href='show_user.php?user_id=%d'>%s</a>" .
@@ -52,5 +48,7 @@ display_head("Current Users" ,$delete_user_script);
     </ul>
 </div>
 
-</body>
-</html>
+<?php
+display_footer();
+?>
+
